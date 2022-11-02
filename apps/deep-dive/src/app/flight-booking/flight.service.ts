@@ -1,10 +1,16 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Flight } from './flight';
+import { DummyFlightService } from './dummy-flight.service';
+import { createFlightService } from './flight-service.factory'
+import { HttpClient } from '@angular/common/http';
 
-@Injectable()
-// {providedIn: 'root'}
+@Injectable({
+  providedIn: 'root',
+  useFactory: createFlightService,
+  deps: [HttpClient]
+})
 export abstract class FlightService {
   // We will refactor this to an observable in a later exercise!
   flights: Flight[] = [];

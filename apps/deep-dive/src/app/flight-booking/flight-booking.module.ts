@@ -30,8 +30,8 @@ import { DefaultFlightService } from './default-flight.service';
   ],
   providers:[
     // {
-    //  provide: FlightService,
-    // //  useClass: DefaultFlightService,
+      // provide: FlightService,
+      // useClass: DefaultFlightService,
     //  useFactory: (http: HttpClient) => {
     //     if(environment.dummyFlightService){
     //       return new DummyFlightService();
@@ -41,8 +41,8 @@ import { DefaultFlightService } from './default-flight.service';
     //  }, deps: [HttpClient]
     // }
 
-   { provide: FlightService, useClass: DefaultFlightService, multi: true},
-   { provide: FlightService, useClass: DummyFlightService, multi: true},
+  //  { provide: FlightService, useClass: DefaultFlightService, multi: true},
+  //  { provide: FlightService, useClass: DummyFlightService, multi: true},
   ],
   exports: [
     FlightSearchComponent

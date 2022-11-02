@@ -9,7 +9,7 @@ import { Flight } from './flight';
 import { FlightService } from './flight.service';
 
 @Injectable(
-  // {providedIn: 'root'}
+   { providedIn: 'root' }
 )
 export class DefaultFlightService implements FlightService{
 
