@@ -14,7 +14,6 @@ import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FormsModule } from '@angular/forms';
 import { DefaultFlightService } from './default-flight.service';
-import { environment } from '../../environments/environment';
 
 @NgModule({
   imports: [
@@ -30,17 +29,20 @@ import { environment } from '../../environments/environment';
     FlightEditComponent
   ],
   providers:[
-    {
-     provide: FlightService,
-    //  useClass: DefaultFlightService,
-     useFactory: (http: HttpClient) => {
-        if(environment.dummyFlightService){
-          return new DummyFlightService();
-        }else{
-          return new DefaultFlightService(http); //default here? check recording
-        }
-     }, deps: [HttpClient]
-    }
+    // {
+    //  provide: FlightService,
+    // //  useClass: DefaultFlightService,
+    //  useFactory: (http: HttpClient) => {
+    //     if(environment.dummyFlightService){
+    //       return new DummyFlightService();
+    //     }else{
+    //       return new DefaultFlightService(http); //default here? check recording
+    //     }
+    //  }, deps: [HttpClient]
+    // }
+
+   { provide: FlightService, useClass: DefaultFlightService, multi: true},
+   { provide: FlightService, useClass: DummyFlightService, multi: true},
   ],
   exports: [
     FlightSearchComponent
