@@ -3,7 +3,6 @@ import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Flight } from './flight';
 import { DummyFlightService } from './dummy-flight.service';
-import { createFlightService } from './flight-service.factory'
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()

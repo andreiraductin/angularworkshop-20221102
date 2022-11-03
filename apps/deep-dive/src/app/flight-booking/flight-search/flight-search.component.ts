@@ -10,12 +10,12 @@ import { FlightService } from '../flight.service';
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.scss'],
-  providers: [
-    {
-      provide: FlightService,
-      useClass: DummyFlightService
-    }
-  ]
+  // providers: [
+  //   {
+  //     provide: FlightService,
+  //     useClass: DummyFlightService
+  //   }
+  // ]
 })
 export class FlightSearchComponent implements OnInit {
 
