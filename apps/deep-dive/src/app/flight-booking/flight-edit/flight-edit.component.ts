@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { validateCity, validateCityWithParams } from '../../shared/validation/city-validator';
+import { validateCity, validateCityWithParams, validateRoundTrip } from '../../shared/validation/city-validator';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -20,18 +20,21 @@ export class FlightEditComponent implements OnInit {
     id: [0],
     from: ['Graz', 
      [Validators.required,
-     validateCityWithParams(['Hamburg', 'Paris'])]
+      Validators.minLength(3),
+      validateCityWithParams(['Hamburg', 'Paris'])]
     ],
-    to: ['Bucharest',Validators.required],
+    to: ['Bucharest',
+     [Validators.required,
+      validateCityWithParams(['Londra', 'Paris'])]],
     date: [new Date().toISOString()]
 });
 
   constructor(
     private route: ActivatedRoute, 
     private fb: FormBuilder) {
-      // this.editForm.valueChanges.subscribe(
-      //   console.log        
-      // )
+      this.editForm.valueChanges.subscribe(
+        console.log        
+      )
     }
 
   ngOnInit(): void {
@@ -39,6 +42,7 @@ export class FlightEditComponent implements OnInit {
       this.id = p['id'];
       this.showDetails = p['showDetails'];
     });
+    this.editForm.validator = validateRoundTrip;
   }
 
   save(){

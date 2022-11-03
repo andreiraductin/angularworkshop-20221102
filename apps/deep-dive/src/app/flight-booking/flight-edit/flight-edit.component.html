@@ -47,6 +47,8 @@
         <input formControlName="date" class="form-control">
     </div>   
 
+    all form errors: {{ editForm.controls['from'].errors | json }}	 {{ editForm.controls['to'].errors | json }}	
+
     <div class="form-group">
         <button 
         class="btn btn-default" 
