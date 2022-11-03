@@ -31,6 +31,16 @@
         <label>To:</label>
         <input formControlName="to" class="form-control">
     </div>
+    <div class="alert alert-danger" *ngIf="editForm.controls.to.invalid">
+        From field is not valid, please correct
+    </div>
+    <div class="alert alert-danger" *ngIf="editForm.controls.to.hasError('required')">
+        From field is required, please fill in
+    </div>
+    <div class="alert alert-danger" *ngIf="editForm.controls.to.hasError('city')">
+        The provided city is not allowed.
+        Use one of the cities {{ editForm.controls.to.errors?.['city'].allowedCities.join(',')}}
+    </div>
 
     <div class="form-group">
         <label>Date:</label>

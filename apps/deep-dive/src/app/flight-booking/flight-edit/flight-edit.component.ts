@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { validateCity } from '../../shared/validation/city-validator';
+import { validateCity, validateCityWithParams } from '../../shared/validation/city-validator';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -20,7 +20,7 @@ export class FlightEditComponent implements OnInit {
     id: [0],
     from: ['Graz', 
      [Validators.required,
-     validateCity]
+     validateCityWithParams(['Hamburg', 'Paris'])]
     ],
     to: ['Bucharest',Validators.required],
     date: [new Date().toISOString()]

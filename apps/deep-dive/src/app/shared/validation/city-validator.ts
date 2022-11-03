@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 export function validateCity(
   control: AbstractControl
 ): ValidationErrors | null {
@@ -6,12 +6,26 @@ export function validateCity(
 
   if (!allowedCities.includes(control.value)) {
     return {
-      city:{
+      city: {
         allowedCities,
-        actualValue: control.value
-      }
+        actualValue: control.value,
+      },
     };
   }
 
   return null;
+}
+
+export function validateCityWithParams(allowedCities: string[]): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    if (!allowedCities.includes(control.value)) {
+      return {
+        city: {
+          allowedCities,
+          actualValue: control.value,
+        },
+      };
+    }
+    return null;
+  };
 }
