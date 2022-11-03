@@ -6,3 +6,39 @@
 <p>
     ShowDetail: {{id}}
 </p>
+
+<form [formGroup]="editForm">
+    <div class="form-group">
+        <label>ID:</label>
+        <input formControlName="id" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>From:</label>
+        <input formControlName="from" class="form-control">
+    </div>
+    <div class="alert alert-danger" *ngIf="editForm.controls.from.invalid">
+        From field is not valid, please correct
+    </div>
+    <div class="alert alert-danger" *ngIf="editForm.controls.from.hasError('required')">
+        From field is required, please fill in
+    </div>
+
+    <div class="form-group">
+        <label>To:</label>
+        <input formControlName="to" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Date:</label>
+        <input formControlName="date" class="form-control">
+    </div>   
+
+    <div class="form-group">
+        <button 
+        class="btn btn-default" 
+        (click)="save()"
+        [disabled]="!editForm.valid">
+            Save
+        </button>
+    </div>
+</form>
