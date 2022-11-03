@@ -3,6 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { validateCity } from '../../shared/validation/city-validator';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -17,7 +18,10 @@ export class FlightEditComponent implements OnInit {
 
   editForm  = this.fb.nonNullable.group({
     id: [0],
-    from: ['Graz', Validators.required],
+    from: ['Graz', 
+     [Validators.required,
+     validateCity]
+    ],
     to: ['Bucharest',Validators.required],
     date: [new Date().toISOString()]
 });
@@ -25,9 +29,9 @@ export class FlightEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private fb: FormBuilder) {
-      this.editForm.valueChanges.subscribe(
-        console.log        
-      )
+      // this.editForm.valueChanges.subscribe(
+      //   console.log        
+      // )
     }
 
   ngOnInit(): void {

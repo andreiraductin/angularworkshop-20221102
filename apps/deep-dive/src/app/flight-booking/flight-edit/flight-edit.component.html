@@ -22,6 +22,10 @@
     <div class="alert alert-danger" *ngIf="editForm.controls.from.hasError('required')">
         From field is required, please fill in
     </div>
+    <div class="alert alert-danger" *ngIf="editForm.controls.from.hasError('city')">
+        The provided city is not allowed.
+        Use one of the cities {{ editForm.controls.from.errors?.['city'].allowedCities.join(',')}}
+    </div>
 
     <div class="form-group">
         <label>To:</label>
