@@ -1,7 +1,6 @@
 // src/app/flight-search/flight-search.component.ts
 
 import { Component, Inject, OnInit } from '@angular/core';
-import { DummyFlightService } from '../dummy-flight.service';
 import { Flight } from '../flight';
 import { FlightService } from '../flight.service';
 

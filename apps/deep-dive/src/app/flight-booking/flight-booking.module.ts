@@ -1,8 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { DummyFlightService } from './dummy-flight.service';
 import { FlightService } from './flight.service';
-// src/app/flight-booking/flight-booking.module.ts
-
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { FlightSearchComponent } from './flight-search/flight-search.component';

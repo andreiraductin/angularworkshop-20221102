@@ -3,7 +3,7 @@
 // src/app/default-flight.service.ts
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable, OnInit, Inject } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Flight } from './flight';
 import { FlightService } from './flight.service';
