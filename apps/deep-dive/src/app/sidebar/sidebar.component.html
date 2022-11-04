@@ -19,17 +19,32 @@
             </a>
         </li>
 
-        <li routerLinkActive="active">
+         <!-- New -->
+        <li>
+          <a routerLink="flight-booking/flight-search">
+              <i class="ti-arrow-top-right"></i>
+              <p>Flight Booking</p>
+          </a>
+      </li>
+
+        <!-- <li routerLinkActive="active">
             <a routerLink="flight-search">
                 <p>Flights</p>
             </a>
-        </li>
+        </li> -->
 
-        <li routerLinkActive="active">
+        <!-- <li routerLinkActive="active">
             <a routerLink="passenger-search">
                 <p>Passengers</p>
             </a>
-        </li>
+        </li> -->
+
+        <li routerLinkActive="active">
+          <a [routerLink]="[{outlets: { aux: 'basket' }}]">
+              <i class="ti-shopping-cart"></i>
+              <p>Basket</p>
+          </a>
+      </li>
 
         <li routerLinkActive="active"> 
           <a routerLink="about">

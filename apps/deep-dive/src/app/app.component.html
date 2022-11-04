@@ -13,7 +13,7 @@
 
             <router-outlet></router-outlet>
 
-            <!-- Named placeholder: -->
+            <!-- New additional outlet -->  
             <router-outlet name="aux"></router-outlet>
 
         </div>
@@ -30,3 +30,11 @@
         <div class="double-bounce2"></div>
     </div>
 </div> -->
+
+<div *ngIf="showLoadingIndicator" class="loading-indicator" style="z-index: 50">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+  </div>
+  

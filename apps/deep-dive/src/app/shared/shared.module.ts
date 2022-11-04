@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './deactivation/can-deactivate.guard';
 // src/app/shared/shared.module.ts
 
 import { NgModule } from '@angular/core';
@@ -35,6 +36,9 @@ import { CityValidationDirective } from './validation/city-validation.directive'
 
     // New definition
     CityValidationDirective
+  ],
+  providers:[
+    CanDeactivateGuard
   ]
 })
 export class SharedModule { }
