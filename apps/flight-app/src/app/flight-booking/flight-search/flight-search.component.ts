@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FlightService} from '@flight-workspace/flight-lib';
 import { Store } from '@ngrx/store';
-import { flightsLoaded } from '../+state/flight-booking.actions';
+import { take } from 'rxjs';
+import { flightsLoaded, updateFlight } from '../+state/flight-booking.actions';
 import { FlightBookingAppState } from '../+state/flight-booking.reducer';
 
 @Component({
@@ -15,9 +16,9 @@ export class FlightSearchComponent implements OnInit {
   to = 'Graz'; // in Austria
   urgent = false;
 
-  get flights() {
-    return this.flightService.flights;
-  }
+  // get flights() {
+  //   return this.flightService.flights;
+  // }
 
   // "shopping basket" with selected flights
   basket: { [id: number]: boolean } = {
@@ -35,6 +36,7 @@ export class FlightSearchComponent implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit');
+    // this.flights$.subscribe(flights => {      console.log(flights)});
   }
 
   search(): void {
@@ -50,10 +52,21 @@ export class FlightSearchComponent implements OnInit {
         console.error('error', error);
       } 
     });
+    //this.flights$ = this.store.select(s => s.flightBooking.flights);
   }
 
   delay(): void {
-    this.flightService.delay();
+  
+    this.flights$.pipe(take(1)).subscribe(flights => {
+      const flight = flights[0];
+  
+      const oldDate = new Date(flight.date);
+      const newDate = new Date(oldDate.getTime() + 15 * 60 * 1000);
+      const newFlight = { ...flight, date: newDate.toISOString() };
+      
+      this.store.dispatch(updateFlight({flight: newFlight}));
+    });
   }
+  
 
 }

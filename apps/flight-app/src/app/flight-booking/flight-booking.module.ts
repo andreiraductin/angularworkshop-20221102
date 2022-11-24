@@ -20,7 +20,7 @@ import { FlightBookingEffects } from './+state/flight-booking.effects';
     FormsModule,
     SharedModule.forChild(),
     RouterModule.forChild(FLIGHT_BOOKING_ROUTES),
-    StoreModule.forFeature(fromFlightBooking.flightBookingFeatureKey, fromFlightBooking.reducer),
+    StoreModule.forFeature(fromFlightBooking.flightBookingFeatureKey, fromFlightBooking.flightBookingReducer),
     EffectsModule.forFeature([FlightBookingEffects])
   ],
   declarations: [
