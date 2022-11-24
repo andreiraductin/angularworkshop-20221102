@@ -29,3 +29,8 @@ export const flightsLoad = createAction(
   '[FlightBooking] Flights load',
   props<{from: string, to: string, urgent: boolean}>()
 );
+
+export const flightsLoadedError = createAction(
+  '[FlightBooking] Flights loaded error',
+  props<{ error: any }>()
+);
